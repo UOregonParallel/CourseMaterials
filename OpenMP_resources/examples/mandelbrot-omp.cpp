@@ -1,3 +1,5 @@
+// Source: http://bisqwit.iki.fi/story/howto/openmp/#ExampleCalculatingTheMandelbrotFractalInParallel
+
 #include <complex>
  #include <cstdio>
  
