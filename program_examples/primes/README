@@ -1,0 +1,39 @@
+/**
+ * @author James Kress
+ * @date February 1, 2014
+ * @version 1.0.0
+ *
+ * This is the README file for the primes examples program. These programs
+ * use a naive algorithm to count the number of prime numbers within
+ * a given range. 
+ *
+ * For Further Information: 
+ *       Send queries or bug reports to jkress@cs.uoregon.edu
+ */
+ 
+//------------
+COMPILING THE PROGRAMS
+//------------
+In order to compile these programs you will need to have gcc, g++, tbb, 
+and icpc. If these are not present then the example script will not work.
+
+
+//------------
+RUNNING THE PROGRAMS
+//------------
+To run the prime example programs, please use the provided script 
+'runPrimes.sh'. This script will compile and run the examples, 
+outputting the results to both the screen and file. If the needed compilers 
+or libraries are not available comment out the programs that will depend 
+on them in the script before running. 
+ 
+ 
+//------------
+EXAMPLE OUTPUT
+//------------
+Example output is provided in the file 'exampleOutput.txt'
+
+
+/* vim: set ts=4: */
+//END ALL
+
