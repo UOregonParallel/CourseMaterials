@@ -57,11 +57,11 @@
     pdfmenubar=true,        	% show Acrobat’s menu?
     pdffitwindow=false,     	% window fit to page when opened
     pdfstartview={Fit},   		% fits the width of the page to the window    
-    pdfauthor={},     % author
-    pdfsubject={Parallel Programming},   	% subject of the document
-    pdfcreator={},   			% creator of the document
-    pdfproducer={}, 			% producer of the document
-    pdfkeywords={University of Oregon, parallel programming}, 
+    pdfauthor={James Kress},     % author
+    pdfsubject={Fall 2013},   	% subject of the document
+    pdfcreator={JK},   			% creator of the document
+    pdfproducer={JK}, 			% producer of the document
+    pdfkeywords={CDUX, James Kress, University of Oregon}, 
     pdfnewwindow=true,      	% links in new window
     colorlinks=true,       		% false: boxed links; true: colored links
     linkcolor=white,          	% color of internal links
