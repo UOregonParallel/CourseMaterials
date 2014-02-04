@@ -22,7 +22,16 @@
 #------------------------------------------------------------------------------
 gcc -fopenmp prime_openmp.c -o prime_omp
 g++ prime_tbb.cpp -ltbb -lrt -o prime_tbb
-icpc prime_cilkplus.cpp -o prime_cilkplus
+#icpc prime_cilkplus.cpp -o prime_cilkplus
+
+#------------------------------------------------------------------------------
+# MIST - different requirements on MIST, uncomment these and comment the above
+#------------------------------------------------------------------------------
+#module load intel/14.0.1
+#export LD_LIBRARY_PATH=/usr/local/packages/intel_xe/14.0.1/tbb/lib/intel64/gcc4.1
+#g++ prime_tbb.cpp -L/usr/local/packages/intel_xe/14.0.1/tbb/lib/intel64/gcc4.1 -ltbb -o prime_tbb
+#gcc -fopenmp prime_openmp.c -o prime_omp
+#icpc prime_cilkplus.cpp -o prime_cilkplus
 
 
 #------------------------------------------------------------------------------
