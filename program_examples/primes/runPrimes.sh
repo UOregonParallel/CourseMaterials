@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 ###############################################################################
 # Parallel Program Example Script
 #
@@ -22,7 +22,7 @@
 #------------------------------------------------------------------------------
 gcc -fopenmp prime_openmp.c -o prime_omp
 g++ prime_tbb.cpp -ltbb -lrt -o prime_tbb
-#icpc prime_cilkplus.cpp -o prime_cilkplus
+icpc prime_cilkplus.cpp -o prime_cilkplus
 
 #------------------------------------------------------------------------------
 # MIST - different requirements on MIST, uncomment these and comment the above
