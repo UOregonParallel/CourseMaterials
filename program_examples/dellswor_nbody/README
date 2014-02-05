@@ -1,0 +1,6 @@
+Basic N-Body simulation code
+
+The code in this directory demonstrates a really naive N-Body simulation. Our solar system is modelled with point masses, collisions are not acconted for. Parallel implementations use parallel for constructions.
+
+When run using the OVA on an older iMac with a VM having 2 virtual processors, runtimes are longer when parallel.
+
