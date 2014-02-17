@@ -1,0 +1,9 @@
+*.aux
+*.out
+*.log
+*.nav
+*.snm
+*.pdf
+*.o
+*.toc
+makeSlides
