@@ -9,4 +9,4 @@ pass_cilk:
 	icpc -o pass_cilk pass_cilk.c -lcrypto -fcilkplus -lcilkrts
 
 pass_tbb:
-	icpc -o pass_tbb pass_tbb.c -lcrypto -ltbb
+	icpc -o pass_tbb pass_tbb.cpp -lcrypto -ltbb
