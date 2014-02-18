@@ -87,7 +87,7 @@
 	\end{frame} 
 	
 	
-	\subsection{Code Fusion}
+	\subsection{Sequences of Maps}
 	
 		\begin{frame} \frametitle{Sequences of Maps}
       \begin{columns}
@@ -113,6 +113,7 @@
       \end{columns}
 		\end{frame}
 
+	\subsection{Code Fusion}
 		\begin{frame} \frametitle{Code Fusion}
       \begin{columns}
         \begin{column}{0.48\textwidth}
@@ -133,6 +134,7 @@
       \end{columns}
 		\end{frame}
 
+	\subsection{Cache Fusion}
 		\begin{frame} \frametitle{Cache Fusion}
       \begin{columns}
         \begin{column}{0.48\textwidth}
@@ -167,11 +169,37 @@
 		\tableofcontents[currentsection]
 	\end{frame} 
 	
+	\subsection{Overview}
 	
-	\subsection{subsection title...}
+		\begin{frame} \frametitle{Overview}
+			There are several patterns related to map. Three are discussed here: stencil, workpile, and divide-and-conquer. They will be discussed more in detail in a later lecture. Remember maps apply when you can perform the same operation on multiple elements with no dependencies.		
+		\end{frame}
 	
-		\begin{frame} \frametitle{title}
+	\subsection{Stencil}
 	
+		\begin{frame} \frametitle{Stencil}
+			\begin{itemize}
+				\item Each instance of the map function accesses neighbors of its input, offset from its usual input
+				\item Common in imaging and PDE solvers
+			\end{itemize}
+		\end{frame}
+
+	\subsection{Workpile}
+	
+		\begin{frame} \frametitle{Workpile}
+			\begin{itemize}
+				\item Work items can be added to the map while it is in progress, from inside map function instances
+				\item Work grows and is consumed by the map
+				\item Workpile pattern terminates when no more work is available
+			\end{itemize}
+		\end{frame}
+		
+	\subsection{Divide-and-Conquer}
+		
+		\begin{frame} \frametitle{Divide-and-Conquer}
+			\begin{itemize}
+				\item Applies if a problem can be divided into smaller subproblems recursively until a base case is reached that can be solved serially
+			\end{itemize}
 		\end{frame}
 %-----------------------------------------------------------------------------%
 % End: Related Patterns
