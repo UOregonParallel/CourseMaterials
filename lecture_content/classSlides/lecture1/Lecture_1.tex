@@ -18,7 +18,7 @@
 % Begining: Title Page Material
 %=============================================================================%
 \begin{document}
-	\title[Lecture 1]{Lecture 1 title ...}
+	\title[Map Pattern]{Map Pattern}
 	\author[]{\className}
 	\institute[\className]{\departmentName}
 	\date{} 
@@ -54,26 +54,73 @@
 % End: Map
 %-----------------------------------------------------------------------------%
 
+
 %=============================================================================%
 % Section -> SAXPY Example
 %=============================================================================%
-\section{SAXPY Example} 
+\section{Scaled Vector Addition (SAXPY) Example} 
 
 	\begin{frame} \frametitle{Table of Contents}
-		%\tableofcontents
-		%\tableofcontents[pausesections]
 		\tableofcontents[currentsection]
 	\end{frame} 
 	
+	\subsection{Problem Description}
 	
-	\subsection{subsection title...}
+		\begin{frame} \frametitle{Problem Description}
+		\begin{enumerate}
+		
+		\item $y \leftarrow ax + y$
+		
+		\begin{enumerate}
+			\item Scales vector $x$ by $a$ and adds it to vector $y$ 
+			\item Result is stored in input vector $y$
+		\end{enumerate}
+		
+		\item SAXPY comes from the BLAS (Basic Linear Algebra Subprograms) library
+		\item SAXPY has a low arithmetic intensity, so it does not scale well
+		
+		\end{enumerate}
+		\end{frame}
 	
-		\begin{frame} \frametitle{title}
+	\subsection{Serial SAXPY Implementation}
 	
+		\begin{frame} \frametitle{Serial SAXPY Implementation}
+			\begin{figure}
+				\centering
+				\includegraphics[width=115mm]{images/listing-4-1.pdf}
+			\end{figure}
+		\end{frame}
+		
+	\subsection{TBB SAXPY Implementation}
+	
+		\begin{frame} \frametitle{TBB SAXPY Implementation}
+			\begin{figure}
+				\centering
+				\includegraphics[width=115mm]{images/listing-4-2.pdf}
+			\end{figure}
+		\end{frame}
+		
+	\subsection{Cilk Plus SAXPY Implementation}
+	
+		\begin{frame} \frametitle{Cilk Plus SAXPY Implementation}
+			\begin{figure}
+				\centering
+				\includegraphics[width=115mm]{images/listing-4-3.pdf}
+			\end{figure}
+		\end{frame}
+		
+	\subsection{OpenMP SAXPY Implementation}
+	
+		\begin{frame} \frametitle{OpenMP SAXPY Implementation}
+			\begin{figure}
+				\centering
+				\includegraphics[width=115mm]{images/listing-4-5.pdf}
+			\end{figure}
 		\end{frame}
 %-----------------------------------------------------------------------------%
 % End: SAXPY Example
 %-----------------------------------------------------------------------------%
+
 
 %=============================================================================%
 % Section -> Optimizations 
@@ -87,14 +134,77 @@
 	\end{frame} 
 	
 	
-	\subsection{subsection title...}
+	\subsection{Sequences of Maps}
 	
-		\begin{frame} \frametitle{title}
-	
+		\begin{frame} \frametitle{Sequences of Maps}
+      \begin{columns}
+        \begin{column}{0.48\textwidth}
+          \begin{itemize}
+            \item
+              Often several map operations occur in sequence
+              \begin{itemize}
+                \item
+                  Vector math consists of many small operations such as
+                  additions and multiplications applied as maps
+              \end{itemize}
+            \item
+              A na\"\i ve implementation may write each intermediate result to
+              memory, wasting memory bandwidth and likely overwhelming the
+              cache.
+          \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+          \centering
+          \includegraphics[width=0.9\textwidth]{images/figure-4-2-1}
+        \end{column}
+      \end{columns}
+		\end{frame}
+
+	\subsection{Code Fusion}
+		\begin{frame} \frametitle{Code Fusion}
+      \begin{columns}
+        \begin{column}{0.48\textwidth}
+          \begin{itemize}
+            \item
+              Can sometimes ``fuse'' together the operations to perform them at
+              once
+            \item
+              Adds arithmetic intensity, reduces memory/cache usage
+            \item
+              Ideally, operations can be performed using registers alone
+          \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+          \centering
+          \includegraphics[width=0.9\textwidth]{images/figure-4-2-2}
+        \end{column}
+      \end{columns}
+		\end{frame}
+
+	\subsection{Cache Fusion}
+		\begin{frame} \frametitle{Cache Fusion}
+      \begin{columns}
+        \begin{column}{0.48\textwidth}
+          \begin{itemize}
+            \item
+              Sometimes impractical to fuse together the map operations
+            \item
+              Can instead break the work into blocks, giving each CPU one block
+              at a time
+            \item
+              Hopefully, operations use cache alone
+          \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+          \centering
+          \includegraphics[width=0.9\textwidth]{images/figure-4-3-2}
+        \end{column}
+      \end{columns}
 		\end{frame}
 %-----------------------------------------------------------------------------%
 % End: Optimizations
 %-----------------------------------------------------------------------------%
+
 
 %=============================================================================%
 % Section -> Related Patterns
@@ -107,11 +217,37 @@
 		\tableofcontents[currentsection]
 	\end{frame} 
 	
+	\subsection{Overview}
 	
-	\subsection{subsection title...}
+		\begin{frame} \frametitle{Overview}
+			There are several patterns related to map. Three are discussed here: stencil, workpile, and divide-and-conquer. They will be discussed more in detail in a later lecture. Remember maps apply when you can perform the same operation on multiple elements with no dependencies.		
+		\end{frame}
 	
-		\begin{frame} \frametitle{title}
+	\subsection{Stencil}
 	
+		\begin{frame} \frametitle{Stencil}
+			\begin{itemize}
+				\item Each instance of the map function accesses neighbors of its input, offset from its usual input
+				\item Common in imaging and PDE solvers
+			\end{itemize}
+		\end{frame}
+
+	\subsection{Workpile}
+	
+		\begin{frame} \frametitle{Workpile}
+			\begin{itemize}
+				\item Work items can be added to the map while it is in progress, from inside map function instances
+				\item Work grows and is consumed by the map
+				\item Workpile pattern terminates when no more work is available
+			\end{itemize}
+		\end{frame}
+		
+	\subsection{Divide-and-Conquer}
+		
+		\begin{frame} \frametitle{Divide-and-Conquer}
+			\begin{itemize}
+				\item Applies if a problem can be divided into smaller subproblems recursively until a base case is reached that can be solved serially
+			\end{itemize}
 		\end{frame}
 %-----------------------------------------------------------------------------%
 % End: Related Patterns
