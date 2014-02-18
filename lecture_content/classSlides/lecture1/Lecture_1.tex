@@ -18,7 +18,7 @@
 % Begining: Title Page Material
 %=============================================================================%
 \begin{document}
-	\title[Lecture 1]{Lecture 1 title ...}
+	\title[Map Pattern]{Map Pattern}
 	\author[]{\className}
 	\institute[\className]{\departmentName}
 	\date{} 
@@ -54,26 +54,73 @@
 % End: Map
 %-----------------------------------------------------------------------------%
 
+
 %=============================================================================%
 % Section -> SAXPY Example
 %=============================================================================%
-\section{SAXPY Example} 
+\section{Scaled Vector Addition (SAXPY) Example} 
 
 	\begin{frame} \frametitle{Table of Contents}
-		%\tableofcontents
-		%\tableofcontents[pausesections]
 		\tableofcontents[currentsection]
 	\end{frame} 
 	
+	\subsection{Problem Description}
 	
-	\subsection{subsection title...}
+		\begin{frame} \frametitle{Problem Description}
+		\begin{enumerate}
+		
+		\item $y \leftarrow ax + y$
+		
+		\begin{enumerate}
+			\item Scales vector $x$ by $a$ and adds it to vector $y$ 
+			\item Result is stored in input vector $y$
+		\end{enumerate}
+		
+		\item SAXPY comes from the BLAS (Basic Linear Algebra Subprograms) library
+		\item SAXPY has a low arithmetic intensity, so it does not scale well
+		
+		\end{enumerate}
+		\end{frame}
 	
-		\begin{frame} \frametitle{title}
+	\subsection{Serial SAXPY Implementation}
 	
+		\begin{frame} \frametitle{Serial SAXPY Implementation}
+			\begin{figure}
+				\centering
+				\includegraphics[width=115mm]{images/listing-4-1.pdf}
+			\end{figure}
+		\end{frame}
+		
+	\subsection{TBB SAXPY Implementation}
+	
+		\begin{frame} \frametitle{TBB SAXPY Implementation}
+			\begin{figure}
+				\centering
+				\includegraphics[width=115mm]{images/listing-4-2.pdf}
+			\end{figure}
+		\end{frame}
+		
+	\subsection{Cilk Plus SAXPY Implementation}
+	
+		\begin{frame} \frametitle{Cilk Plus SAXPY Implementation}
+			\begin{figure}
+				\centering
+				\includegraphics[width=115mm]{images/listing-4-3.pdf}
+			\end{figure}
+		\end{frame}
+		
+	\subsection{OpenMP SAXPY Implementation}
+	
+		\begin{frame} \frametitle{OpenMP SAXPY Implementation}
+			\begin{figure}
+				\centering
+				\includegraphics[width=115mm]{images/listing-4-5.pdf}
+			\end{figure}
 		\end{frame}
 %-----------------------------------------------------------------------------%
 % End: SAXPY Example
 %-----------------------------------------------------------------------------%
+
 
 %=============================================================================%
 % Section -> Optimizations 
@@ -95,6 +142,7 @@
 %-----------------------------------------------------------------------------%
 % End: Optimizations
 %-----------------------------------------------------------------------------%
+
 
 %=============================================================================%
 % Section -> Related Patterns
