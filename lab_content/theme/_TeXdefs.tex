@@ -1,0 +1,79 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: _TeXdefs.tex
+% Author: James Kress
+% Date: January 25, 2014
+% Description: A tex file containing the \usepackage declarations, and
+%			   other document critial style settings.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-----------Package imports
+\usepackage{graphicx}
+\usepackage{pgfpages}
+\usepackage{tikz}
+\usepackage{latexsym}
+\usepackage{verbatim}
+%//////////END package imports
+
+
+%----------Style elements
+\useoutertheme{infolines} 
+\usetheme{Frankfurt} 
+\usepackage{../theme/beamercolorthemeoregon}
+\setbeamertemplate{sections/subsections in toc}[default]
+\setbeamertemplate{footline}
+{
+\leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=.75ex,center]{institute in head/foot}%
+    \usebeamerfont{institute in head/foot}\insertshortinstitute
+  \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=.75ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=.75ex,center]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate\hspace*{3em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+%/////////END style elements
+
+
+%---------Command Declarations
+\DeclareGraphicsExtensions{.pdf, .jpeg, .png, .jpg}
+\graphicspath{ {../images/} }
+\newcommand{\className}{\text{CIS 510}}
+\newcommand{\departmentName}{\textit{Department of Computer and 
+									Information Science \\ University of Oregon}}
+%/////////END command declarations
+
+
+%---------Setup pdf properties
+\hypersetup{
+	pdfusetitle=true,
+    bookmarks=true,         	% show bookmarks bar?
+    unicode=false,          	% non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        	% show Acrobat’s toolbar?
+    pdfmenubar=true,        	% show Acrobat’s menu?
+    pdffitwindow=false,     	% window fit to page when opened
+    pdfstartview={Fit},   		% fits the width of the page to the window    
+    pdfauthor={},     % author
+    pdfsubject={Parallel Programming},   	% subject of the document
+    pdfcreator={},   			% creator of the document
+    pdfproducer={}, 			% producer of the document
+    pdfkeywords={University of Oregon, parallel programming}, 
+    pdfnewwindow=true,      	% links in new window
+    colorlinks=true,       		% false: boxed links; true: colored links
+    linkcolor=white,          	% color of internal links
+    hidelinks,
+    citecolor=green,        	% color of links to bibliography
+    filecolor=magenta,      	% color of file links
+    urlcolor=cyan,           	% color of external links
+    linktoc=page,
+    pageanchor = true
+}
+%//////////END setup pdf properties
+
+
+%END ALL
+
