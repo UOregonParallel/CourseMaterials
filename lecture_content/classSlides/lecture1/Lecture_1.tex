@@ -87,10 +87,70 @@
 	\end{frame} 
 	
 	
-	\subsection{subsection title...}
+	\subsection{Code Fusion}
 	
-		\begin{frame} \frametitle{title}
-	
+		\begin{frame} \frametitle{Sequences of Maps}
+      \begin{columns}
+        \begin{column}{0.48\textwidth}
+          \begin{itemize}
+            \item
+              Often several map operations occur in sequence
+              \begin{itemize}
+                \item
+                  Vector math consists of many small operations such as
+                  additions and multiplications applied as maps
+              \end{itemize}
+            \item
+              A na\"\i ve implementation may write each intermediate result to
+              memory, wasting memory bandwidth and likely overwhelming the
+              cache.
+          \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+          \centering
+          \includegraphics[width=0.9\textwidth]{images/figure-4-2-1}
+        \end{column}
+      \end{columns}
+		\end{frame}
+
+		\begin{frame} \frametitle{Code Fusion}
+      \begin{columns}
+        \begin{column}{0.48\textwidth}
+          \begin{itemize}
+            \item
+              Can sometimes ``fuse'' together the operations to perform them at
+              once
+            \item
+              Adds arithmetic intensity, reduces memory/cache usage
+            \item
+              Ideally, operations can be performed using registers alone
+          \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+          \centering
+          \includegraphics[width=0.9\textwidth]{images/figure-4-2-2}
+        \end{column}
+      \end{columns}
+		\end{frame}
+
+		\begin{frame} \frametitle{Cache Fusion}
+      \begin{columns}
+        \begin{column}{0.48\textwidth}
+          \begin{itemize}
+            \item
+              Sometimes impractical to fuse together the map operations
+            \item
+              Can instead break the work into blocks, giving each CPU one block
+              at a time
+            \item
+              Hopefully, operations use cache alone
+          \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+          \centering
+          \includegraphics[width=0.9\textwidth]{images/figure-4-3-2}
+        \end{column}
+      \end{columns}
 		\end{frame}
 %-----------------------------------------------------------------------------%
 % End: Optimizations
