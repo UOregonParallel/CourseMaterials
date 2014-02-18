@@ -45,7 +45,7 @@
 	\end{frame} 
 	
 	
-	\subsection{Map subsection}
+	%\subsection{Map subsection}
 	
 		\begin{frame}[fragile] \frametitle{Mapping}
 		\begin{itemize}
@@ -214,25 +214,24 @@
 	\end{frame} 
 	
 	\subsection{Problem Description}
-	
 		\begin{frame} \frametitle{Problem Description}
-		\begin{enumerate}
-		
-		\item $y \leftarrow ax + y$
-		
-		\begin{enumerate}
-			\item Scales vector $x$ by $a$ and adds it to vector $y$ 
-			\item Result is stored in input vector $y$
-		\end{enumerate}
-		
-		\item SAXPY comes from the BLAS (Basic Linear Algebra Subprograms) library
-		\item SAXPY has a low arithmetic intensity, so it does not scale well
-		
-		\end{enumerate}
+            \begin{enumerate}
+                \item $y \leftarrow ax + y$
+                    \begin{enumerate}
+                        \item Scales vector $x$ by $a$ and adds it to vector 
+                        $y$ 
+                        \item Result is stored in input vector $y$
+                    \end{enumerate}
+                \item SAXPY comes from the BLAS (Basic Linear Algebra 
+                Subprograms) library
+                \item SAXPY has a low arithmetic intensity, so it does not 
+                scale well
+            \end{enumerate}
 		\end{frame}
 	
-	\subsection{Serial SAXPY Implementation}
-	
+	\subsection{SAXPY Implementations}
+
+	%\subsection{Serial SAXPY Implementation}
 		\begin{frame} \frametitle{Serial SAXPY Implementation}
 			\begin{figure}
 				\centering
@@ -240,8 +239,7 @@
 			\end{figure}
 		\end{frame}
 		
-	\subsection{TBB SAXPY Implementation}
-	
+	%\subsection{TBB SAXPY Implementation}
 		\begin{frame} \frametitle{TBB SAXPY Implementation}
 			\begin{figure}
 				\centering
@@ -249,8 +247,7 @@
 			\end{figure}
 		\end{frame}
 		
-	\subsection{Cilk Plus SAXPY Implementation}
-	
+	%\subsection{Cilk Plus SAXPY Implementation}
 		\begin{frame} \frametitle{Cilk Plus SAXPY Implementation}
 			\begin{figure}
 				\centering
@@ -258,8 +255,7 @@
 			\end{figure}
 		\end{frame}
 		
-	\subsection{OpenMP SAXPY Implementation}
-	
+	%\subsection{OpenMP SAXPY Implementation}
 		\begin{frame} \frametitle{OpenMP SAXPY Implementation}
 			\begin{figure}
 				\centering
@@ -366,36 +362,40 @@
 		\tableofcontents[currentsection]
 	\end{frame} 
 	
-	\subsection{Overview}
-	
-		\begin{frame} \frametitle{Overview}
-			There are several patterns related to map. Three are discussed here: stencil, workpile, and divide-and-conquer. They will be discussed more in detail in a later lecture. Remember maps apply when you can perform the same operation on multiple elements with no dependencies.		
-		\end{frame}
+	%\subsection{Overview}
+    \begin{frame} \frametitle{Overview}
+        There are several patterns related to map. Three are discussed here:
+        stencil, workpile, and divide-and-conquer. They will be discussed 
+        more in detail in a later lecture. Remember maps apply when you can 
+        perform the same operation on multiple elements with no dependencies.
+    \end{frame}
 	
 	\subsection{Stencil}
-	
-		\begin{frame} \frametitle{Stencil}
-			\begin{itemize}
-				\item Each instance of the map function accesses neighbors of its input, offset from its usual input
-				\item Common in imaging and PDE solvers
-			\end{itemize}
-		\end{frame}
+        \begin{frame} \frametitle{Stencil}
+            \begin{itemize}
+                \item Each instance of the map function accesses neighbors of 
+                its input, offset from its usual input
+                \item Common in imaging and PDE solvers
+            \end{itemize}
+        \end{frame}
 
 	\subsection{Workpile}
-	
 		\begin{frame} \frametitle{Workpile}
 			\begin{itemize}
-				\item Work items can be added to the map while it is in progress, from inside map function instances
+				\item Work items can be added to the map while it is in 
+                progress, from inside map function instances
 				\item Work grows and is consumed by the map
-				\item Workpile pattern terminates when no more work is available
+				\item Workpile pattern terminates when no more work is
+                available 
 			\end{itemize}
 		\end{frame}
 		
 	\subsection{Divide-and-Conquer}
-		
 		\begin{frame} \frametitle{Divide-and-Conquer}
 			\begin{itemize}
-				\item Applies if a problem can be divided into smaller subproblems recursively until a base case is reached that can be solved serially
+				\item Applies if a problem can be divided into smaller 
+                subproblems recursively until a base case is reached that can
+                be solved serially
 			\end{itemize}
 		\end{frame}
 %-----------------------------------------------------------------------------%
