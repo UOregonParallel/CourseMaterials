@@ -41,21 +41,6 @@
 		\end{center}
 	\end{frame}
 	
-	\begin{frame}{Map Pattern}
-		\begin{columns}
-			\begin{column}{0.5\textwidth}
-				\begin{itemize}
-					\item N atomic data units
-					\item 1-to-1 mapping of work units to compute units
-					\item Compute units all apply the same atomic computation
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.5\textwidth}
-				\includegraphics[width=\textwidth]{images/mapPattern}
-			\end{column}
-		\end{columns}
-	\end{frame}
-	
 	\begin{frame}{Executive PIN Recovery}
 		\begin{columns}
 			\begin{column}{0.5\textwidth}
@@ -76,12 +61,28 @@
 		\begin{itemize}
 			\item Have the user carry a hashed copy of the pin
 			\item Enter the hashed copy to the software
-			\item Software hashes all pins
+			\item Software hashes all possible pins
 			\item Software returns the pin that matches the entered hash
 			\item \href{http://ix.cs.uoregon.edu/~dellswor/410}{\url{http://ix.cs.uoregon.edu/~dellswor/410}}
 		\end{itemize}
 	\end{frame}
 	%--- Next Frame ---%
+	
+  \begin{frame}{Map Pattern}
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item N atomic data units
+					\item 1-to-1 mapping of work units to compute units
+					\item Compute units all apply the same atomic computation
+				\end{itemize}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{images/mapPattern}
+			\end{column}
+		\end{columns}
+	\end{frame}
+	
 	
 	\begin{frame}{Multiple Passwords}
 		\begin{itemize}
@@ -101,9 +102,8 @@
   \begin{frame}{Key Points - Map}
 		\begin{itemize}
       \item Concept: apply the same operation to multiple data elements independently
-      \item Performance: parallelizes well when the operation is the same 
       \item Design: Challenge in map is ensuring operations do the same amount of work
-			\item In using parallel patterns, identifying the correct parallelism to exploit is key to performance
+			\item Identifying the correct parallelization is key to performance
 		\end{itemize}
 	\end{frame}
 
