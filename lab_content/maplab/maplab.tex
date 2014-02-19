@@ -83,8 +83,30 @@
 	\end{frame}
 	%--- Next Frame ---%
 	
-		
+	\begin{frame}{Multiple Passwords}
+		\begin{itemize}
+			\item Instead of cracking just one executive pin, crack all of them
+			\item Discussion: How do we parallelize this?
+		\end{itemize}
+	\end{frame}
 	
+	\begin{frame}{Multiple Passwords - Example code}
+		\begin{itemize}
+      \item Example code is stored on Mist
+      \item Get into a directory you store source in 
+			\item On Mist: run "cp -r /home/users/poliadz/ParallelPasswordCracker ."
+		\end{itemize}
+	\end{frame}
+	
+  \begin{frame}{Key Points - Map}
+		\begin{itemize}
+      \item Concept: apply the same operation to multiple data elements independently
+      \item Performance: parallelizes well when the operation is the same 
+      \item Design: Challenge in map is ensuring operations do the same amount of work
+			\item In using parallel patterns, identifying the correct parallelism to exploit is key to performance
+		\end{itemize}
+	\end{frame}
+
 \end{document}
 %END ALL
 
