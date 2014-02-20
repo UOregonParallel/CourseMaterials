@@ -41,21 +41,6 @@
 		\end{center}
 	\end{frame}
 	
-	\begin{frame}{Map Pattern}
-		\begin{columns}
-			\begin{column}{0.5\textwidth}
-				\begin{itemize}
-					\item N atomic data units
-					\item 1-to-1 mapping of work units to compute units
-					\item Compute units all apply the same atomic computation
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.5\textwidth}
-				\includegraphics[width=\textwidth]{images/mapPattern}
-			\end{column}
-		\end{columns}
-	\end{frame}
-	
 	\begin{frame}{Executive PIN Recovery}
 		\begin{columns}
 			\begin{column}{0.5\textwidth}
@@ -76,15 +61,62 @@
 		\begin{itemize}
 			\item Have the user carry a hashed copy of the pin
 			\item Enter the hashed copy to the software
-			\item Software hashes all pins
+			\item Software hashes all possible pins
 			\item Software returns the pin that matches the entered hash
 			\item \href{http://ix.cs.uoregon.edu/~dellswor/410}{\url{http://ix.cs.uoregon.edu/~dellswor/410}}
 		\end{itemize}
 	\end{frame}
 	%--- Next Frame ---%
 	
-		
+  \begin{frame}{Map Pattern}
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item N atomic data units
+					\item 1-to-1 mapping of work units to compute units
+					\item Compute units all apply the same atomic computation
+				\end{itemize}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{images/mapPattern}
+			\end{column}
+		\end{columns}
+	\end{frame}
 	
+	
+	\begin{frame}{Multiple Passwords}
+		\begin{itemize}
+			\item Instead of cracking just one executive pin, crack a set of them
+			\item Discussion: How do we parallelize this?
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Multiple Passwords - Example code}
+		\begin{itemize}
+      \item Example code is stored on Mist
+      \item Get into a directory you store source in 
+			\item On Mist: run "cp -r /home/users/poliadz/ParallelPasswordCracker ."
+		\end{itemize}
+	\end{frame}
+	
+  \begin{frame}{Homework}
+	\begin{itemize}
+		\item Assignment: Convert an image into ASCII art
+		\item Note: You will use this in later labs to display your results
+		\item Details: \href{https://github.com/UOregonParallel/CourseMaterials/wiki/ASCII-Art}{\url{https://github.com/UOregonParallel/CourseMaterials/wiki/ASCII-Art}}
+	\end{itemize}
+  \end{frame}
+  
+  \begin{frame}{Key Points - Map}
+		\begin{itemize}
+      \item Concept: apply the same operation to multiple data elements independently
+      \item Design: Challenge in map is ensuring operations do the same amount of work
+			\item Identifying the correct parallelization is key to performance
+		\end{itemize}
+	\end{frame}
+	
+	%--- Next Frame ---%
+
 \end{document}
 %END ALL
 
