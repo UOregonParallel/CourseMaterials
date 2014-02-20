@@ -10,7 +10,7 @@
 SRC         := $(wildcard *.tex)
 
 Lecture_1.pdf: $(SRC)
-	pdflatex $(SRC) | .././makeSlides $(SRC) 
+	pdflatex $(SRC) | ../makeSlides $(SRC) 
 	
 clean:
 	rm -rf *.aux *.log *.toc *.nav *.out *.snm *.pdf *~
