@@ -45,181 +45,181 @@
 	\end{frame} 
 	
 	
-	%\subsection{Map subsection}
-	\begin{frame}[fragile] \frametitle{Mapping}
-		\begin{itemize}
-				\item ``Do the same thing many times"
-				\item \begin{verbatim}
-				foreach foo in Foo:
-				    do something
-				\end{verbatim}
-				\item Well known higher order function in languages like ML, 
-				Haskell, Scala
-				\[ \texttt{map} : \forall a b. (a \to b) \to \texttt{List}\langle 
-				a\rangle \to \texttt{List}\langle b\rangle \]
-				applies a function to each element in a list and returns a list 
-                of results.\\
-		\end{itemize}
-	\end{frame}
-		
-	\begin{frame} \frametitle{Example Maps}
-		\begin{itemize}
-			\item Add $1$ to every item in an array
-			\item Double every item in an array
-			\item Convert a list of temperatures from Celsius to Fahrenheit
-			\item 3d animation: render each frame in a sequence
-			\item For each point on the complex plane, compute if in Mandelbrot 
-			set
-		\end{itemize}
-		\begin{columns}
-  			\begin{column}{0.4\textwidth}
-				\begin{block}{Famous Fractal}
-					Point $c$ if the sequence $z_{n+1} = z_n^2 + c$ starting at
-					zero is bounded
-				\end{block}
-		    \end{column}
-		    \begin{column}{0.6\textwidth}
-				\includegraphics[width=60mm]{Images/Mandelset_hires.png}
-			\end{column}
-		\end{columns}
-	\end{frame}
-		
-	\begin{frame} \frametitle{Example Maps Cont.}
-		Some things might not look like maps at first...but can often be 
-		implemented as map+some pre and/or post processing
-		\begin{itemize}
-		    \item Password Cracking
-		    \item Bitcoin Mining
-		    \item Procedural Terrain Generation 
-		    \item Number Theoretic Problems (e.g. Quadratic Field Sieve used in 
-		    fast factoring)
-		    \item Parameter Estimation for Scientific Models
-		\end{itemize}
-		\begin{alertblock}{Not just arrays}
-			Map pattern is datatype independent.  With various levels of 
-			efficiency we can map over lists, trees, graphs, etc... Even 
-			abstract ``collection" like sequences of numbers
-		\end{alertblock}
-	\end{frame}
-		
-	\begin{frame} \frametitle{Key idea}
-		\begin{itemize}
-			\item map is a ``foreach loop" \pause 
-			\alert{where each iteration is independent} \pause
-		\end{itemize}
-		\begin{block}{Embarrassingly Parallel}
-		Independence is big win.  We can run map completely in parallel.
-		Significant speedups:\\More precisely: $T(\infty)$ is  $O(1)$ plus
-		implementation overhead that is $O(\log{n})$\ldots so $T(\infty)
-		\in O(\log n)$\\$T(1) \in O(n)$
-		\end{block}
-	\end{frame}
-		
-	\begin{frame}[fragile] \frametitle{Sequential Map}
-		\begin{columns}
-			\begin{column}{0.5\textwidth}
-				\begin{verbatim}
-				for(int n = 0;
-					   n < array.length;
-					   ++n){
-					        process(array[n]);
-				}
-				\end{verbatim}
-		    \end{column}
-  			\begin{column}{0.5\textwidth}
-				\includegraphics[width=60mm]{images/map_serial.png}
-		    \end{column}
-		\end{columns}
-	\end{frame}
-		
-		
-	\begin{frame}[fragile] \frametitle{Parallel Map}
-		\begin{columns}
-			\begin{column}{0.5\textwidth}
-				\begin{verbatim}
-				parallel_for_each(
-				    x in array){
-					        process(x);
-				}
-				\end{verbatim}
-		    \end{column}
-	  		\begin{column}{0.5\textwidth}
-				\includegraphics[width=60mm]{images/map_parallel.png}
-			\end{column}
-		\end{columns}
-	\end{frame}
-		
-	\begin{frame}[fragile] \frametitle{Comparing Maps}
-		\begin{columns}
-			\begin{column}{0.5\textwidth}
-				\includegraphics[width=60mm]{images/map_serial.png}
-		    \end{column}
-  			\begin{column}{0.5\textwidth}
-				\includegraphics[width=60mm]{images/map_parallel.png}\pause
-				\begin{block}{Hallelujah}
-					This space here is \textbf{speedup}. Our program finished 
-					early so now we are in a self congratulatory text-block 
-                    instead of waiting for sequential execution.
-				\end{block}
-		     \end{column}
-		\end{columns}
-	\end{frame}
-%		
-	\begin{frame} \frametitle{Independence}
-		The key to (embarrassing) parallelism is independence.\pause
-		\begin{alertblock}{Warning: No shared state!}
-			Map function should be ``pure" (or ``pure-ish") and should not 
-            modify shared states.
-		\end{alertblock}
-		Modifying shared state breaks perfect independence.\\Accidentally
-		violating independence may result in non-determinism, data-races, 
-		undefined behavior, segfaults, etc. \pause The C/C++ standard has 
-		``catch fire semantics" for data races. That means it is part of the 
-		programming language semantics for your computer to \textbf{literally
-		catch fire} or do absolutely anything.
-	\end{frame}
-		
-	\begin{frame}[fragile] \frametitle{Implementation and API}
-		\begin{itemize}
-			\item In OpenMP and CilkPlus we have a parallel \texttt{for} 
-			language construct
-			\item map is a mode of use of parallel \texttt{for}
-			\item TBB uses \textbf{higher order functions} with lambda
-			expressions/``functors"
-			\item Some language (CilkPlus, Matlab, Fortran) provide
-			\textbf{array notation} which makes some maps more concise\\
-			\begin{exampleblock}{Array Notation}
-				\begin{verbatim}
-				a[:] = a[:]*5;
-				\end{verbatim}
-				is CilkPlus array notation for ``multiply every element in 
-                \texttt{a} by $5$" 
-			\end{exampleblock}
-		\end{itemize}
-	\end{frame}
-		
-	\begin{frame} \frametitle{Generalization?}
-		\begin{block}{unary maps}
-			So far we have only dealt with mapping over a single collection
-		\end{block}
-	\end{frame}
-		
-	\begin{frame} \frametitle{1 to 1 map}
-		\includegraphics[width=110mm]{images/map1to1.jpg}
-	\end{frame}  
-		
-	\begin{frame} \frametitle{Generalization?}
-		\begin{block}{n-ary maps}
-			But sometimes it makes sense to map over multiple collections at 
-            once 
-		\end{block}
-		functional programming languages call this \texttt{zipWith} or 
-		sometimes \texttt{map2}
-	\end{frame}
-		
-	\begin{frame} \frametitle{2 to 1 map}
-		\includegraphics[width=110mm]{images/map2to1.png}
-	\end{frame} 
+	\subsection*{Mapping}
+		\begin{frame}[fragile] \frametitle{Mapping}
+			\begin{itemize}
+					\item ``Do the same thing many times"
+					\item \begin{verbatim}
+					foreach foo in Foo:
+					    do something
+					\end{verbatim}
+					\item Well known higher order function in languages like ML, 
+					Haskell, Scala
+					\[ \texttt{map} : \forall a b. (a \to b) \to \texttt{List}\langle 
+					a\rangle \to \texttt{List}\langle b\rangle \]
+					applies a function to each element in a list and returns a list 
+	                of results.\\
+			\end{itemize}
+		\end{frame}
+			
+		\begin{frame} \frametitle{Example Maps}
+			\begin{itemize}
+				\item Add $1$ to every item in an array
+				\item Double every item in an array
+				\item Convert a list of temperatures from Celsius to Fahrenheit
+				\item 3d animation: render each frame in a sequence
+				\item For each point on the complex plane, compute if in Mandelbrot 
+				set
+			\end{itemize}
+			\begin{columns}
+	  			\begin{column}{0.4\textwidth}
+					\begin{block}{Famous Fractal}
+						Point $c$ if the sequence $z_{n+1} = z_n^2 + c$ starting at
+						zero is bounded
+					\end{block}
+			    \end{column}
+			    \begin{column}{0.6\textwidth}
+					\includegraphics[width=60mm]{Images/Mandelset_hires.png}
+				\end{column}
+			\end{columns}
+		\end{frame}
+			
+		\begin{frame} \frametitle{Example Maps Cont.}
+			Some things might not look like maps at first...but can often be 
+			implemented as map+some pre and/or post processing
+			\begin{itemize}
+			    \item Password Cracking
+			    \item Bitcoin Mining
+			    \item Procedural Terrain Generation 
+			    \item Number Theoretic Problems (e.g. Quadratic Field Sieve used in 
+			    fast factoring)
+			    \item Parameter Estimation for Scientific Models
+			\end{itemize}
+			\begin{alertblock}{Not just arrays}
+				Map pattern is datatype independent.  With various levels of 
+				efficiency we can map over lists, trees, graphs, etc... Even 
+				abstract ``collection" like sequences of numbers
+			\end{alertblock}
+		\end{frame}
+			
+		\begin{frame} \frametitle{Key idea}
+			\begin{itemize}
+				\item map is a ``foreach loop" \pause 
+				\alert{where each iteration is independent} \pause
+			\end{itemize}
+			\begin{block}{Embarrassingly Parallel}
+			Independence is big win.  We can run map completely in parallel.
+			Significant speedups:\\More precisely: $T(\infty)$ is  $O(1)$ plus
+			implementation overhead that is $O(\log{n})$\ldots so $T(\infty)
+			\in O(\log n)$\\$T(1) \in O(n)$
+			\end{block}
+		\end{frame}
+			
+		\begin{frame}[fragile] \frametitle{Sequential Map}
+			\begin{columns}
+				\begin{column}{0.5\textwidth}
+					\begin{verbatim}
+					for(int n = 0;
+						   n < array.length;
+						   ++n){
+						        process(array[n]);
+					}
+					\end{verbatim}
+			    \end{column}
+	  			\begin{column}{0.5\textwidth}
+					\includegraphics[width=60mm]{images/map_serial.png}
+			    \end{column}
+			\end{columns}
+		\end{frame}
+			
+			
+		\begin{frame}[fragile] \frametitle{Parallel Map}
+			\begin{columns}
+				\begin{column}{0.5\textwidth}
+					\begin{verbatim}
+					parallel_for_each(
+					    x in array){
+						        process(x);
+					}
+					\end{verbatim}
+			    \end{column}
+		  		\begin{column}{0.5\textwidth}
+					\includegraphics[width=60mm]{images/map_parallel.png}
+				\end{column}
+			\end{columns}
+		\end{frame}
+			
+		\begin{frame}[fragile] \frametitle{Comparing Maps}
+			\begin{columns}
+				\begin{column}{0.5\textwidth}
+					\includegraphics[width=60mm]{images/map_serial.png}
+			    \end{column}
+	  			\begin{column}{0.5\textwidth}
+					\includegraphics[width=60mm]{images/map_parallel.png}\pause
+					\begin{block}{Hallelujah}
+						This space here is \textbf{speedup}. Our program finished 
+						early so now we are in a self congratulatory text-block 
+	                    instead of waiting for sequential execution.
+					\end{block}
+			     \end{column}
+			\end{columns}
+		\end{frame}
+			
+		\begin{frame} \frametitle{Independence}
+			The key to (embarrassing) parallelism is independence.\pause
+			\begin{alertblock}{Warning: No shared state!}
+				Map function should be ``pure" (or ``pure-ish") and should not 
+	            modify shared states.
+			\end{alertblock}
+			Modifying shared state breaks perfect independence.\\Accidentally
+			violating independence may result in non-determinism, data-races, 
+			undefined behavior, segfaults, etc. \pause The C/C++ standard has 
+			``catch fire semantics" for data races. That means it is part of the 
+			programming language semantics for your computer to \textbf{literally
+			catch fire} or do absolutely anything.
+		\end{frame}
+			
+		\begin{frame}[fragile] \frametitle{Implementation and API}
+			\begin{itemize}
+				\item In OpenMP and CilkPlus we have a parallel \texttt{for} 
+				language construct
+				\item map is a mode of use of parallel \texttt{for}
+				\item TBB uses \textbf{higher order functions} with lambda
+				expressions/``functors"
+				\item Some language (CilkPlus, Matlab, Fortran) provide
+				\textbf{array notation} which makes some maps more concise\\
+				\begin{exampleblock}{Array Notation}
+					\begin{verbatim}
+					a[:] = a[:]*5;
+					\end{verbatim}
+					is CilkPlus array notation for ``multiply every element in 
+	                \texttt{a} by $5$" 
+				\end{exampleblock}
+			\end{itemize}
+		\end{frame}
+			
+		\begin{frame} \frametitle{Generalization?}
+			\begin{block}{unary maps}
+				So far we have only dealt with mapping over a single collection
+			\end{block}
+		\end{frame}
+			
+		\begin{frame} \frametitle{1 to 1 map}
+			\includegraphics[width=110mm]{images/map1to1.jpg}
+		\end{frame}  
+			
+		\begin{frame} \frametitle{Generalization?}
+			\begin{block}{n-ary maps}
+				But sometimes it makes sense to map over multiple collections at 
+	            once 
+			\end{block}
+			functional programming languages call this \texttt{zipWith} or 
+			sometimes \texttt{map2}
+		\end{frame}
+			
+		\begin{frame} \frametitle{2 to 1 map}
+			\includegraphics[width=110mm]{images/map2to1.png}
+		\end{frame} 
 %-----------------------------------------------------------------------------%
 % End: Map
 %-----------------------------------------------------------------------------%
@@ -251,8 +251,6 @@
 		\end{frame}
 	
 	\subsection{SAXPY Implementations}
-
-	%\subsection{Serial SAXPY Implementation}
 		\begin{frame} \frametitle{Serial SAXPY Implementation}
 			\begin{figure}
 				\centering
@@ -260,7 +258,6 @@
 			\end{figure}
 		\end{frame}
 		
-	%\subsection{TBB SAXPY Implementation}
 		\begin{frame} \frametitle{TBB SAXPY Implementation}
 			\begin{figure}
 				\centering
@@ -268,7 +265,6 @@
 			\end{figure}
 		\end{frame}
 		
-	%\subsection{Cilk Plus SAXPY Implementation}
 		\begin{frame} \frametitle{Cilk Plus SAXPY Implementation}
 			\begin{figure}
 				\centering
@@ -276,7 +272,6 @@
 			\end{figure}
 		\end{frame}
 		
-	%\subsection{OpenMP SAXPY Implementation}
 		\begin{frame} \frametitle{OpenMP SAXPY Implementation}
 			\begin{figure}
 				\centering
@@ -376,7 +371,7 @@
 		\tableofcontents[currentsection]
 	\end{frame} 
 	
-	%\subsection{Overview}
+	\subsection*{Overview}
     \begin{frame} \frametitle{Overview}
         There are several patterns related to map. Three are discussed here:
         stencil, workpile, and divide-and-conquer. They will be discussed 
@@ -384,7 +379,7 @@
         perform the same operation on multiple elements with no dependencies.
     \end{frame}
 	
-	\subsection{Stencil}
+	\subsection*{Related Patterns}
         \begin{frame} \frametitle{Stencil}
             \begin{itemize}
                 \item Each instance of the map function accesses neighbors of 
@@ -392,8 +387,7 @@
                 \item Common in imaging and PDE solvers
             \end{itemize}
         \end{frame}
-
-	\subsection{Workpile}
+        
 		\begin{frame} \frametitle{Workpile}
 			\begin{itemize}
 				\item Work items can be added to the map while it is in 
@@ -405,7 +399,6 @@
 	
 		\end{frame}
 		
-	\subsection{Divide-and-Conquer}
 		\begin{frame}[fragile] \frametitle{Divide-and-Conquer}
 			\begin{itemize}
 				\item Applies if a problem can be divided into smaller 
