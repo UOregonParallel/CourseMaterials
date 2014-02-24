@@ -1,0 +1,3 @@
+O-SNAP has purchased Alien Decapitation Machines (ADMs) from Cyberdyne Systems with a tree based network communication system. Code for a simulator to help in AI development was provided by the vendor however the simulator is too slow. You need to accelerate the simulator.
+
+Parents in the tree can push data to that the children use to complete an AI step. Upon completion of the childs step, it returns some information to the parent, that the parent can then use to complete it’s own step. You can find this logic in the SimADMCore.cc file inside the step function.
