@@ -65,8 +65,8 @@ public:
 		int i, j, k;
 
 		for (i=r.begin(); i!=r.end(); i++){
-			for (j=0; j<M; j++){
-				for(k=0; k<P; k++){
+			for(k=0; k<P; k++){
+				for (j=0; j<M; j++){
 					C[N*i+j] += A[N*i+k] * B[P*k+j];
 				}
 			}
