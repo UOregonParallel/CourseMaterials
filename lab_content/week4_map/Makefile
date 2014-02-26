@@ -9,7 +9,7 @@
 ############################################################################
 SRC         := $(wildcard *.tex)
 
-Lecture_1.pdf: $(SRC)
+week4_map.pdf: $(SRC)
 	pdflatex $(SRC) | ../makeSlides $(SRC) 
 	
 clean:
