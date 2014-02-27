@@ -15,7 +15,7 @@
 %>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>%
 
 %=============================================================================%
-% Begining: Title Page Material
+% Beginning: Title Page Material
 %=============================================================================%
 \begin{document}
 	\title[Map Pattern]{Parallel Control Patterns\\Map}
@@ -53,7 +53,7 @@
 					foreach foo in Foo:
 					    do something
 					\end{verbatim}
-					\item Well known higher order function in languages like ML, 
+					\item Well-known higher order function in languages like ML, 
 					Haskell, Scala
 					\[ \texttt{map} : \forall a b. (a \to b) \to \texttt{List}\langle 
 					a\rangle \to \texttt{List}\langle b\rangle \]
@@ -67,7 +67,7 @@
 				\item Add $1$ to every item in an array
 				\item Double every item in an array
 				\item Convert a list of temperatures from Celsius to Fahrenheit
-				\item 3d animation: render each frame in a sequence
+				\item 3D animation: render each frame in a sequence
 				\item For each point on the complex plane, compute if in Mandelbrot 
 				set
 			\end{itemize}
@@ -91,8 +91,8 @@
 			    \item Password Cracking
 			    \item Bitcoin Mining
 			    \item Procedural Terrain Generation 
-			    \item Number Theoretic Problems (e.g. Quadratic Field Sieve used in 
-			    fast factoring)
+			    \item Number Theoretic Problems (e.g. Quadratic Field Sieve
+                used in fast factoring)
 			    \item Parameter Estimation for Scientific Models
 			\end{itemize}
 			\begin{alertblock}{Not just arrays}
@@ -152,14 +152,16 @@
 		\begin{frame}[fragile] \frametitle{Comparing Maps}
 			\begin{columns}
 				\begin{column}{0.5\textwidth}
-					\includegraphics[width=60mm]{images/map_serial.png}
+					\centering{Serial Map}
+					\includegraphics[width=55mm]{images/map_serial.png}
 			    \end{column}
 	  			\begin{column}{0.5\textwidth}
-					\includegraphics[width=60mm]{images/map_parallel.png}\pause
-					\begin{block}{Hallelujah}
-						This space here is \textbf{speedup}. Our program finished 
-						early so now we are in a self congratulatory text-block 
-	                    instead of waiting for sequential execution.
+	  				\centering{Parallel Map}
+					\includegraphics[width=55mm]{images/map_parallel.png}\pause
+					\begin{block}{Speedup}
+						This space here is \textbf{speedup}. With the parallel
+                        map, our program finished execution early, while the 
+                        serial map is still running.
 					\end{block}
 			     \end{column}
 			\end{columns}
@@ -372,12 +374,12 @@
 	\end{frame} 
 	
 	\subsection*{Overview}
-    \begin{frame} \frametitle{Overview}
-        There are several patterns related to map. Three are discussed here:
-        stencil, workpile, and divide-and-conquer. They will be discussed 
-        more in detail in a later lecture. Remember maps apply when you can 
-        perform the same operation on multiple elements with no dependencies.
-    \end{frame}
+        \begin{frame} \frametitle{Overview}
+            There are several patterns related to map. Three are discussed here:
+            stencil, workpile, and divide-and-conquer. They will be discussed 
+            more in detail in a later lecture. Remember maps apply when you can 
+            perform the same operation on multiple elements with no dependencies.
+        \end{frame}
 	
 	\subsection*{Related Patterns}
         \begin{frame} \frametitle{Stencil}
