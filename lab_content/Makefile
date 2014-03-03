@@ -16,25 +16,30 @@ cc=gcc
 ccflags= 
 ldflags= 
 
+SUBDIRS  := $(wildcard week*)
 
-all: $(prog) MAPLAB 
+.PHONY: all clean subclean veryClean subdirs $(SUBDIRS) 
 
-%.o: %.c
-	$(cc) $(ccflags) -c $<
+all: $(prog) subdirs
+
+subdirs: $(SUBDIRS)
+
+$(SUBDIRS):
+	make -C $@
+
+clean: subclean
+	rm -rf $(objs) *.d  *~ $(prog) 
+
+subclean:
+	for dir in $(SUBDIRS); do    \
+		make -C $$dir clean; \
+	done
 
 $(prog): $(objs)
 	$(cc) $(ccflags) -o $@ $^ $(ldflags)
 
-
-.PHONY: clean veryClean MAPLAB
-
-MAPLAB:
-	make -C maplab
-
-clean:
-	make -C maplab clean
-	rm -rf $(objs) *.d  *~ $(prog) 
-
+%.o: %.c
+	$(cc) $(ccflags) -c $<
 
 #END ALL
 
