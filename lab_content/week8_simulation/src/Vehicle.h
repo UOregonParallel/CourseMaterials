@@ -5,8 +5,6 @@
 #include <vector>
 
 class Vehicle {
-    friend class Vehicle;
-    
     private:
         float velocity;
         float maxvelocity;
