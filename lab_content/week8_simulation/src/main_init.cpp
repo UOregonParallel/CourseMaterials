@@ -2,6 +2,8 @@
 #include <vector>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <stdio.h>
+#include <strings.h>
 #include "Vehicle.h"
 #include "ControlledVehicle.h"
 
