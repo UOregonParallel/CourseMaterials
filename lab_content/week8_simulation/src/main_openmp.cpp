@@ -79,17 +79,32 @@ void startNetwork(int port) {
     //
     // !! need to repeat this part in a way that doesn't lock up the program
     //
-    int sockfd = accept(srvsockfd, (struct sockaddr*) &clnt_addr, &clnt_len);
-    handleConnection(sockfd);
+    while(1) {
+        int sockfd = accept(srvsockfd, (struct sockaddr*) &clnt_addr, &clnt_len);
+        handleConnection(sockfd);
+    }
 }
 
 int main(int argc, char** argv) {
     // setup basic vehicles
     initBaseVehicles();
     
-    // accept connection
-    startNetwork(8866);
+    /// OpenMP may or may not immediately start execution of a task... the
+    /// runtime is free to decide. Using the section construct is better.
     
+    // accept connection
+    #pragma omp parallel num_threads(2)
+    #pragma omp sections
+{
+    #pragma omp section
+    {
+    printf("net started\n");
+    startNetwork(8866);
+    }
+
+    #pragma omp section
+    {
+    printf("not net running\n");
     // run simulation
     while(1) {
         // handle the move phase
@@ -97,4 +112,6 @@ int main(int argc, char** argv) {
         updateLocations();
         processCollisions();
     }
+    }
+}
 }
