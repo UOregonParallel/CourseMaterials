@@ -1,0 +1,38 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: pipeline_labNotes.tex
+% Authors: James Kress
+% Date: February 1, 2014
+% Description: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[]{scrartcl}
+
+%----------Include packages and declarations
+\include{_TeXdefs}
+%//////////END include packages and declarations
+
+%----------Title page information
+\title{CIS 410/510|Parallel Computing \\ Pipeline Lab Notes}
+\date{} 
+%/////////END title page informaiton
+
+
+\begin{document}
+	\maketitle
+
+	\section{Introduction}
+		The Office of Strategic National Alien Planning has intercepted an extraterrestrial video message using their extensive network of deep space listening dishes. The message however is badly deformed due to its long space journey, exposure to solar radiation, and interference from the atmosphere. The office has created a sequential program to undo the damage, but would like a faster version to save time in the future. Therefore, the office needs \textbf{you} to create a parallel implementation of the program to undo the damage to the message so that the intelligence can be retrieved more quickly. The office director states:
+		
+		\begin{quote}
+			\textit{The intelligence contained in this intercepted message is of the utmost importance. It is believed that this information is being sent to aliens currently on Earth, and contains valuable simulation information about our earth based nuclear reactors. It is unclear at this time why the fugitive aliens need this information, but the creation of a parallel program to quickly decoded the message will at least tell us what level of our reactor secrets has been lost, and will aid in future decodings the office may have to do.}
+		\end{quote}
+		
+		The office was able to determine what types of damage the video message suffered on its journey however, so recovering the original message is possible using several different adjustments to each of the frames of the video. The office has determined that the contrast, rotation, brightness, r/g/b, and pixel locations of each of the video frames has been tampered with. This means that each frame will need to undergo many different operations before the frame is fixed. The successive application of different operations to each piece of a video like this plays right to the strengths of the \textbf{Pipeline Pattern}, so the office would like the parallel program to utilize that pattern. 
+		
+	
+	
+
+
+	
+\end{document}
+%END ALL
