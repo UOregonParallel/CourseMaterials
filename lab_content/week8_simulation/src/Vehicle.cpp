@@ -1,4 +1,5 @@
 #include "Vehicle.h"
+#include <stdio.h>
 
 Vehicle::Vehicle() {
     heading=0.0;
@@ -27,8 +28,6 @@ void Vehicle::move(float timedelta) {
     if(velocity>maxvelocity) { velocity=maxvelocity; }
     
     loc.polarMove(heading, velocity);
-    
-    printf("timedelta: %f\nheading: %f\nvelocity: %f\n",timedelta,heading,velocity);
 }
 
 int Vehicle::collisionWith(Vehicle* other) {
