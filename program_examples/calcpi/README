@@ -1,0 +1,30 @@
+/*
+ * Author: Stephanie Labasan
+ * Date: 9 March 2014
+ * Version: 1.0.0
+
+ * README file for the calculating pi example program. The program calculates 
+ * an approximation of pi. The larger the number of intervals used, the more 
+ * accurate the value of pi.
+*/
+
+//---------------------
+DEPENDENCIES
+//---------------------
+Before compiling, you will need to have a gcc, g++, and icpc compiler. In addition, you will need the tbb library.
+
+//---------------------
+COMPILE PROGRAMS ON MIST
+//---------------------
+gcc -o serial calcpi_serial.c
+gcc -o omp -fopenmp calcpi_openmp.c
+g++ -o tbb -L/usr/local/packages/intel_xe/14.0.1/tbb/lib/intel64/gcc4.1 -ltbb calcpi_tbb.cpp
+icpc -o cilk calcpi_cilk.cpp
+
+//---------------------
+PROGRAM EXECUTION
+//---------------------
+A script called 'runProgram.sh' has been created to automatically compile and 
+run the example program in three languages. The script will print the output
+to a text file called 'sampleOutput.txt'.
+
