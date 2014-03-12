@@ -3,7 +3,7 @@ Begin CalculatePi_Serial
 
   Pi         3.141592853590
   Error      0.0000001999999277
-  Time       0.293479s
+  Time       0.293116s
 
 End CalculatePi_Serial
 ********************************************************************
@@ -12,27 +12,17 @@ Begin CalculatePi_OpenMP
   Num Intervals = 10000000
 
   Pi         3.141592853590
-  Error      0.0000002000000006
-  Time       0.043911s
+  Error      0.0000002000000001
+  Time       0.040269s
 
 End CalculatePi_OpenMP
-********************************************************************
-Begin CalculatePi_TBB
-  Num Threads = 8
-  Num Intervals = 1000000
-
-  Pi         0.656924026005
-  Error      2.4846686275846483
-  Time       0.171995s
-
-End CalculatePi_TBB
 ********************************************************************
 Begin CalculatePi_CilkPlus
   Num Threads = 8
   Num Intervals = 10000000
 
   Pi         3.141592853590
-  Error      0.0000002000000041
-  Time       0.022682s
+  Error      0.0000001999999841
+  Time       0.022123s
 
 End CalculatePi_CilkPlus

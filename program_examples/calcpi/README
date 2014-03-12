@@ -16,10 +16,9 @@ Before compiling, you will need to have a gcc, g++, and icpc compiler. In additi
 //---------------------
 COMPILE PROGRAMS ON MIST
 //---------------------
-gcc -o serial calcpi_serial.c
-gcc -o omp -fopenmp calcpi_openmp.c
-g++ -o tbb -L/usr/local/packages/intel_xe/14.0.1/tbb/lib/intel64/gcc4.1 -ltbb calcpi_tbb.cpp
-icpc -o cilk calcpi_cilk.cpp
+gcc -o calcpi_omp -fopenmp calcpi_openmp.c
+g++ -o calcpi_tbb -L/usr/local/packages/intel_xe/14.0.1/tbb/lib/intel64/gcc4.1 -ltbb calcpi_tbb.cpp
+icpc -o calcpi_cilk calcpi_cilk.cpp
 
 //---------------------
 PROGRAM EXECUTION
@@ -28,3 +27,7 @@ A script called 'runProgram.sh' has been created to automatically compile and
 run the example program in three languages. The script will print the output
 to a text file called 'sampleOutput.txt'.
 
+//---------------------
+BUGS & ERRORS
+//---------------------
+In the process of fixing the TBB version.
