@@ -1,0 +1,206 @@
+body {
+  background: #004F27 url( "images/background.jpg" );
+  margin: 30px 40px 40px 40px;
+}
+
+A:link {
+  color: #004F27;
+}
+A:visited {
+  color: #551100;
+}
+
+/*Apply this class to some text to unlock the secrets of the third dimension!*/
+.Three-Dee{
+font-family: 'Bookman Old Style', serif;
+line-height: 1em;
+color: #fff9d6;
+font-weight:bold;
+font-size: 60px;
+text-shadow:0px 0px 0 rgb(197,197,197),1px 1px 0 rgb(170,170,170),2px 2px 0 rgb(142,142,142),3px 3px 0 rgb(114,114,114),4px 4px 0 rgb(87,87,87),5px 5px 0 rgb(59,59,59), 6px 6px 0 rgb(31,31,31),7px 7px 6px rgba(0,0,0,0.6),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);
+}
+
+.auth {
+  text-align: right;
+  color: #000000;
+  font-weight: bold;
+  font-family: arial, helvetica, sans serif;
+
+}
+.auth A {
+  text-decoration: none;
+  color: #000000;
+}
+
+.footer {
+  background: #FFCC00;
+  padding: 0.2em;
+  border-bottom: solid black 3px;
+  text-align: center;
+  font-family: arial, helvetica, sans serif;
+  font-weight: bold;
+  font-size: 70%;
+}
+
+.footer_logo {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.masthead {
+  height: 150;
+  background: url( "images/nav_border.png" ) repeat-x bottom;
+}
+
+.mastheafIMG{
+	height: 
+}
+
+.content {
+  background: #ffffff url( "images/nav_border.png" ) repeat-x bottom;
+  padding-bottom: 10px;
+}
+
+.mainbar {
+  vertical-align: top;
+  padding: 1em;
+}
+
+DIV .mainbar H2 {
+  margin: 0px;
+}
+
+.sidebar {
+  vertical-align: top;
+  width: 30%;
+  padding: 1em;
+  font-size: 90%;
+}
+
+.navigation {
+  background: #FFCC00;
+  padding: 0.2em;
+  border-bottom: solid black 3px;
+}
+.navigation A {
+  padding-left: 5px; padding-right: 5px;
+  text-decoration: none;
+  font-family: arial, helvetica, sans serif;
+  font-weight: bold;
+  font-size: 90%;
+  color: #000000;
+}
+
+
+
+
+.news_item { padding-top: 0.6em; }
+.news_item .date {
+  font-weight: bold;
+}
+
+
+.sidebar .title {
+  padding-left: 0.5em;
+  padding-top: 2px;
+  color: #000000;
+  background: url( '/images/title_border_png' ) no-repeat top right;
+  background-color: #FFCC00;
+}
+.title { 
+  font-weight: bold;
+  font-size: larger;
+  font-family: arial, helvetica, sans serif;
+  color: #004F27;
+  border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black;
+  margin-bottom: 0px
+}
+.headline {}
+
+
+
+.news_page_item {
+  margin: 0.3em;
+  margin-bottom: 0.8em;
+}
+.news_page_title {
+  font-weight: bold; 
+  border-bottom: 1px solid;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+.news_page_body {
+  font-size: 0.9em;
+  padding-top: 0.1em;
+
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+.news_page_link {
+  font-size: 0.9em;
+
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+
+}
+.news_page_date {
+  font: normal 0.9em;
+  font-style: italic;
+  text-decoration: none;
+  float: right;
+}
+
+.project_title {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  font-weight: bold;
+}
+.project_authors {
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+.nav_generic {
+  font-size: 0.9em;
+  padding: 0;
+  text-align: center;
+}
+.nav_generic .nav_item {
+  padding: 0.1em 0.5em 0.1em 0.5em;
+  border: solid black 2px;
+  margin: 0.1em 0.1em 0.1em 0.1em;
+  line-height: 175%;
+  white-space: nowrap;
+  background: #FFCC00;
+}
+.nav_generic A {
+  text-decoration: none;
+  font-family: arial, helvetica, sans serif;
+  font-weight: bold;
+  font-size: 90%;
+  color: #000000;
+}
+.nav_generic .nav_item_selected {
+  padding: 0.1em 0.5em 0.1em 0.5em;
+  border: solid black 2px;
+  margin: 0.1em 0.1em 0.1em 0.1em;
+  line-height: 175%;
+  white-space: nowrap;
+  background: #FFFFFF;
+}
+
+
+
+.table_generic TH {
+  background: #004F27;
+  border-bottom: solid black 2px;
+  color: #FFFFFF;
+  font-family: arial, helvetica, sans serif;
+}
+.table_generic TD {
+  padding: 0.1em;
+  background: #eedddd;
+}
+.table_generic .odd TD {
+  background: #ffdddd;
+}
