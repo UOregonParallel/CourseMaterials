@@ -1,11 +1,30 @@
-Internal Memorandum
+Associated with your enrollment in CIS410/510 Parallel Programming is a lab/programming component. In an attempt at fun, alternate reality gaming techniques are being applied...
+
+Date:    March 24, 2014
+To:      Pseudo-Interns
+CC:      Allen Malony, Brandon Hildreth, David Poliakoff, Daniel Ellsworth
+From:    ***REDACTED***
+Subject: Welcome to the Office of Strategic National Alien Planning (O-SNAP)
+
+In association with your enrollment in the Parallel Programming course at the University of Oregon, you have been selected to participate in the O-SNAP pseudo-internship program. Congratulations! 
+
+The pseudo-internship training replaces/is the lab component for the Parallel Programming course. Officially the training cannot be required since labs did not appear on the registrars schedule this term; attending training is highly recommended. Over your 10 week pseudo-internship you will develop parallel programming skills with three technologies: OpenMP, CilkPlus, and Thread Building Blocks (TBB). You will also learn about 6 parallel patterns.
+
+The training projects have 100% overlap with the programming activities you will be graded on for the course. Expect to complete 2 short programs each week in all three languages as well as a substantial term project with a small group (3-4 students). We expect final project proposals to be approved by the end of week 5.
+
+O-SNAP on-boarding is scheduled in the NIC conference room from 800 to 1700 (8a to 5p) on March 31, 2014. The NIC conference room is 474 Streisinger (an inner office of 470 Streisinger). Please be advised that 470 Streisinger cannot be accessed directly; you will need to use the 4th floor of LISB or Klamath to reach the room. The on-boarding process will familiarize you with the location of training room, account activation on our cluster resources, and assist in training scheduling.
+
+Sincerely,
+***REDACTED***
+Director of Psuedo-Internship Opportunities
+
+
 Date:    March 31, 2014
-To:      Interns
+To:      Pseudo-Interns
+CC:      Allen Malony, Brandon , David Polickoff, Daniel Ellsworth
 From:    Secretary of the Office of Strategic National Alien Planning
 Subject: Welcome to the Office of Strategic National Alien Planning
 
-Congratulations on your 10 week pseudo-internship with O-SNAP. Given that you will be receiving 4 upper division credit hours toward your university transcript, O-SNAP expects a minimun of 16 work hours per week of effort. 4 of the hours will be reserved for mandatory meetings and training (lectures and labs); scheduling of the remaining 12+ hours will be at your discretion. Time sheets will not be required since we trust that you are highly motivated to improve your skills and prevent the alien apocalypse.
+Congratulations on your 10 week pseudo-internship with O-SNAP. Given that you will be receiving 4 upper division credit hours toward your university transcript, O-SNAP expects roughly 12 work hours per week of effort. 5 of the hours will be reserved for mandatory meetings and training (lectures and labs); scheduling of the remaining 7+ hours will be at your discretion. Time sheets will not be required since we trust that you are highly motivated to improve your skills and prevent the alien apocalypse.
 
 10 weeks is not a lot of time to make a difference so you'll want to get started early. Please form a project team with 1 or 2 of your peers to work on one of the active O-SNAP projects. We anticipate that multiple teams will be working on the same project. To promote a healthy sense of competition among our interns, a leader board will track the performance of each team's solution.
-
-O-SNAP training will also promote healthy competition. O-SNAP training exercises will generally have an associated deliverable program. Training exercises are to be completed individually and a leader board will be provided to highlight the most performant solutions.
