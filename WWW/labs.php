@@ -18,8 +18,13 @@
 		<tr>
 			<td class="mainbar">
 				<p><font size="+1">
-			Labs
-		</font></p>
+				Lab Descirptions / lectures
+				</font></p>
+				<p><font size="+1">
+				<a href="labs/maplab.pdf"> Map Lab </a> </br>
+				<a href="labs/week4_matrix.pdf"> Matrix </a> </br>
+				<a href="labs/week5_collectives.pdf"> Collectives </a> </br>
+				</font></p>
 			</td>
 			<td class="sidebar">
 				<img width="450" src="images/BookCover.jpg" style="float:right">
