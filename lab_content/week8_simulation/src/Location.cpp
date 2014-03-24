@@ -5,15 +5,9 @@ Location::Location() {
     x=0.0;
     y=0.0;
 }
-
 Location::Location(float x, float y) {
     this->x=x;
     this->y=y;
-}
-
-void Location::getCoordinate(float* x, float* y) {
-    *x=this->x;
-    *y=this->y;
 }
 
 void Location::getTileCoordinate(int* x, int* y) {
@@ -32,8 +26,8 @@ void Location::polarMove(float radians, float dist) {
     cartesianMove(x,y);
 }
 
-float Location::distance(Location* other) {
-    float dx=this->x-other->x;
-    float dy=this->y-other->y;
+float Location::distance(Location other) {
+    float dx=this->x-other.x;
+    float dy=this->y-other.y;
     return sqrt(dx*dx+dy*dy);
 }

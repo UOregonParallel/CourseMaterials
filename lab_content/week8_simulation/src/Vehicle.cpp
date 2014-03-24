@@ -31,7 +31,7 @@ void Vehicle::move(float timedelta) {
 }
 
 int Vehicle::collisionWith(Vehicle* other) {
-    float d=loc.distance(&(other->loc));
+    float d=loc.distance(other->loc);
     float r=radius+other->radius;
     if(r>d) {
         return 1;

@@ -1,68 +1,27 @@
 #include "ControlledVehicle.h"
 
-#include <stdio.h>
-#include <string.h>
 #include "network.h"
 
-#include <vector>
-#include "Location.h"
-
-static const int BUFFLEN=512;
-
-ControlledVehicle::ControlledVehicle() {
-    sockfd=0;
+ControlledVehicle::ControlledVehicle(): Vehicle() {
+    net = NULL;
 }
 
-void ControlledVehicle::setControlStream(int s) {
-    sockfd = s;
+ControlledVehicle::ControlledVehicle(float x, float y): Vehicle(x,y) {
+    net = NULL;
 }
 
 void ControlledVehicle::ai(std::vector<Vehicle*> others) {
-    float acc, trn;
-    float x, y;
-    int err;
-    char buff[BUFFLEN];
-    
-    //sendNearbyOthers(others);
-    loc.getCoordinate(&x, &y);
-    err=snprintf(buff,BUFFLEN,"::Me\n%f %f\n", x, y);
-    err=writeLine(buff, strlen(buff)+1, sockfd);
-    if(err<1) {
-        printf("Client has gone bad!\n");
-        return;
+    float a,h;
+    network_send(net, this, others);
+    network_recv(net, &a,&h);
+    if(accel + a > maxaccel) { 
+        accel = maxaccel;
+    } else {
+        accel+=a;
     }
-    err=snprintf(buff,BUFFLEN,"::BeginMarkers\n");
-    err=writeLine(buff, strlen(buff)+1, sockfd);
-    if(err<1) {
-        printf("Client has gone bad!\n");
-        return;
-    }
-    for(int i=0; i<others.size(); i++) {
-        Location ol=others[i]->getLocation();
-        if(loc.distance(&ol) < 100) {
-            ol.getCoordinate(&x, &y);
-            err=snprintf(buff,BUFFLEN,"%f %f\n", x, y);
-            err=writeLine(buff, strlen(buff)+1, sockfd);
-            if(err<1) {
-                printf("Client has gone bad!\n");
-                return;
-            }
-        }
-    }
-    err=snprintf(buff,BUFFLEN,"::EndMarkers\n");
-    err=writeLine(buff, strlen(buff)+1, sockfd);
-    if(err<1) {
-        printf("Client has gone bad!\n");
-        return;
-    }
-    
-    //recieveUpdate(&acc,&trn);
-    err=readLine(buff, BUFFLEN, sockfd);
-    err=sscanf(buff,"%f %f\n",&acc,&trn);
-    if(err<1) {
-        printf("Client has gone bad!\n");
-        return;
-    }
-    heading += trn;
-    accel   += acc;
+    heading += h;
+}
+
+void ControlledVehicle::setControlStream(int sockfd) {
+    net = fdopen(sockfd,"r+");
 }

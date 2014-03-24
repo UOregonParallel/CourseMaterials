@@ -1,0 +1,28 @@
+Begin CalculatePi_Serial
+  Num Intervals = 10000000
+
+  Pi         3.141592853590
+  Error      0.0000001999999277
+  Time       0.293116s
+
+End CalculatePi_Serial
+********************************************************************
+Begin CalculatePi_OpenMP
+  Num Threads = 8
+  Num Intervals = 10000000
+
+  Pi         3.141592853590
+  Error      0.0000002000000001
+  Time       0.040269s
+
+End CalculatePi_OpenMP
+********************************************************************
+Begin CalculatePi_CilkPlus
+  Num Threads = 8
+  Num Intervals = 10000000
+
+  Pi         3.141592853590
+  Error      0.0000001999999841
+  Time       0.022123s
+
+End CalculatePi_CilkPlus

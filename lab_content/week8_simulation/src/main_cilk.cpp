@@ -44,7 +44,7 @@ void updateSettings() {
 void handleConnection(int sockfd) {
     ControlledVehicle* v=new ControlledVehicle();
     v->setControlStream(sockfd);
-    vehicles.push_back(v);
+    vehicles.push_back((Vehicle*)v);
 }
 
 void startNetwork(int port) {

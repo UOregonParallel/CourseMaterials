@@ -1,0 +1,18 @@
+\frametitle{Divide-and-Conquer}
+\begin{itemize}
+\item Applies if a problem can be divided into smaller
+                subproblems recursively until a base case is reached that can
+                be solved serially
+\end{itemize}
+\begin{verbatim}
+void DivideAndConquer( Problem P ) {
+   if ( P is base case ) {
+      Solve P;
+   } else {
+      Divide P into K subproblems;
+      Fork to conquer each subproblem in parallel;
+      Join;
+      Combine subsolutions into final solution;
+   }
+}
+\end{verbatim}

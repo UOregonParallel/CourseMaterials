@@ -8,13 +8,13 @@ class Vehicle {
     private:
         float velocity;
         float maxvelocity;
-        float maxaccel;
         float radius;
     
     protected:
         Location loc;
         float heading;
         float accel;
+        float maxaccel;
         
     public:
         Vehicle();

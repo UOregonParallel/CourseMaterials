@@ -1,7 +1,10 @@
-#ifndef _NETWORK_H
-#define _NETWORK_H
+#ifndef NETWORK_H
+#define NETWORK_H
 
-int readLine(char* buff,int bufflen,int sockfd);
-int writeLine(char* buff, int len, int sockfd);
+#include <vector>
+#include "Vehicle.h"
+
+void network_send(FILE* s, Vehicle* v, std::vector<Vehicle*> others);
+void network_recv(FILE* s, float* a, float* h);
 
 #endif

@@ -1,32 +1,30 @@
 #include "network.h"
-#include <stdio.h>
-#include <sys/socket.h>
 
-int readLine(char* buff,int bufflen,int sockfd) {
-    int i=0;
-    size_t rbytes = recv(sockfd,buff,1,0);
-    i++;
-    while(rbytes==1 && i<bufflen-1) {
-        if(*buff=='\n') { 
-            buff++;
-            *buff='\0';
-            return i; 
-        }
-        buff++;
-        rbytes = recv(sockfd,buff,1,0);
+#define BUFLEN 1024
+
+void network_send(FILE* s, Vehicle* v, std::vector<Vehicle*> others) {
+    char buf[BUFLEN];
+    Location l=v->getLocation();
+    snprintf(buf,BUFLEN,"::ME @(%f,%f)\n",l.x,l.y);
+    fputs(buf,s);
+    fputs("::BeginMarkers\n",s);
+    for(int i=0;i<others.size();i++) {
+        Vehicle* c=others[i];
+        l = c->getLocation();
+        snprintf(buf,BUFLEN,"(%f,%f)\n",l.x,l.y);
+        fputs(buf,s);
     }
-    printf("Something went horribly wrong on a read...\n");
-    *buff='\0';
-    return i;
-    
+    fputs("::EndMarkers\n",s);
 }
 
-int writeLine(char* buff, int len, int sockfd) {
-    size_t sbytes = send(sockfd, buff, len, 0);
-    while(sbytes < len) {
-        len-=sbytes;
-        buff+=sbytes;
-        sbytes = send(sockfd, buff, len, 0);
+void network_recv(FILE* s, float* a, float* h) {
+    int err;
+    char buf[BUFLEN];
+    fputs("::Action <accel delta> <heading delta>\n",s);
+    fgets(buf,BUFLEN,s);
+    err = sscanf(buf,"%f %f\n",a,h);
+    if(err<2) {
+        printf("Bad input!\n");
+        *a=0; *h=0;
     }
-    return len;
 }
