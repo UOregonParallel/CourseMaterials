@@ -14,9 +14,16 @@
 prog:=pipeline_tbb
 objs:=$(patsubst %.c,%.o,$(wildcard *.cpp))
 
-cc=g++
-ccflags= -std=gnu++11 -MMD -g -Wall
-ldflags= -lopencv_core -lopencv_highgui -lopencv_imgproc -ltbb -lrt
+# Desktop compile
+#cc=g++
+#ccflags= -std=gnu++11 -MMD -g -Wall
+#ldflags= -lopencv_core -lopencv_highgui -lopencv_imgproc -ltbb -lrt
+
+# MIST compile
+# module load oepncv
+#cc=g++
+#ccflags= -std=gnu++0x -MMD -g -Wall -I/usr/local/packages/opencv/2.4.2/include
+#ldflags= -lopencv_core -lopencv_highgui -lopencv_imgproc -L/usr/local/packages/opencv/2.4.2/lib -L/usr/local/#packages/intel_xe/14.0.1/tbb/lib/intel64/gcc4.1 -ltbb -lrt
 
 
 %.o: %.c

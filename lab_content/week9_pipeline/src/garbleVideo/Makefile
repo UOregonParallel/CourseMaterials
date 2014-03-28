@@ -14,9 +14,18 @@
 prog:=garbleVideo
 objs:=$(patsubst %.c,%.o,$(wildcard *.cpp))
 
-cc=g++
-ccflags= -MMD -g -Wall
-ldflags= -lopencv_core -lopencv_highgui -lopencv_imgproc
+# desktop compile
+#cc=g++
+#ccflags= -MMD -g -Wall
+#ldflags= -lopencv_core -lopencv_highgui -lopencv_imgproc
+
+# MIST compile
+# module load opencv
+#cc=g++
+#ccflags= -MMD -g -Wall -I/usr/local/packages/opencv/2.4.2/include
+#ldflags= -lopencv_core -lopencv_highgui -lopencv_imgproc -L/usr/local/packages/opencv/2.4.2/lib
+
+
 
 %.o: %.c
 	$(cc) $(ccflags) -c $<

@@ -1,0 +1,15 @@
+There are makefiles in each of the three program folders. In order to compile
+any of the programs you must FIRST modify the makefile. There are two 
+predifined sets of build rules, one that may run on your desktop if you 
+have the necessary preresiquites, and one that will run on MIST. Just uncomment
+the appropriate one and it should work.
+
+Prerequisites:
+opencv: version 2.4.2+
+tbb:
+gcc: 4.6+ prefered
+
+MIST
+you will need to 'module load opencv' in order to get the opencv libraries
+as well as a newer gcc version.
+
